@@ -4,7 +4,8 @@ const express = require('express');
 const app = express();
 // import our Model
 const UserModel = require('./models/Users');
-
+// allows front end connection 'without errors', dont forget to add it below (line 19)
+const cors = require('cors')
 
 // introduces the dotenv
 require('dotenv').config();
@@ -15,6 +16,7 @@ const mongoose = require('mongoose');
 
 // needed to parse through body requests
 app.use(express.json());
+app.use(cors());
 
 mongoose.connect(`mongodb+srv://${dbUser}:${dbPass}@cluster0.6ajsr.mongodb.net/merntutorial?retryWrites=true&w=majority`)
 
